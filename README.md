@@ -37,6 +37,8 @@ o	When client connects to the server, a separate thread is created from the serv
 o	The connection management between client and server is carried out using socket creation and its methods to accept the connection request and close the resources
 
 #Flowchart
+
+
  ![image](https://user-images.githubusercontent.com/46851071/110028489-2c27e100-7ce8-11eb-8a4b-96985ea2a2c8.png)
 
 
@@ -63,7 +65,6 @@ o	Coordinator selection is random
 •	File write is synchronized and only 1 client is able to update file at a time
 
 #Liveliness
-
 •	Timeouts:
 1.	When Client sends a Write request and didn’t receive success response from servers for 15000 Milliseconds, it is considered that server is busy or failed. Client checks quorum size and if it is more than 1, write request is sent to available and accessible servers.
 2.	Client waits for quorum for 10000 Milliseconds. If quorum size is less than 2, Error message “Request failed: Client unable to get Quorum” is displayed and request is aborted.
@@ -74,18 +75,23 @@ Code Execution Snapshots
 Client-  DC11 – DC15
 Server DC02 - DC08 
 1.	Client1 sent Write request 
+
   ![image](https://user-images.githubusercontent.com/46851071/110028649-5d081600-7ce8-11eb-9637-3c906d8cfaa7.png)
 
 Coordinator Server4 processing the request
+
  ![image](https://user-images.githubusercontent.com/46851071/110028668-62fdf700-7ce8-11eb-89f5-30cd29226903.png)
 
 2.	Client 2 send READ request
+
  ![image](https://user-images.githubusercontent.com/46851071/110028683-685b4180-7ce8-11eb-83da-471453f8f55c.png)
 
 Server 2 2.txt file
+
  ![image](https://user-images.githubusercontent.com/46851071/110028695-6c875f00-7ce8-11eb-8901-7b07428dbebd.png)
 
 Server 2 processing READ request
+
  ![image](https://user-images.githubusercontent.com/46851071/110028709-727d4000-7ce8-11eb-85ac-56eb02d37d43.png)
 
 #Settings:
